@@ -17,7 +17,7 @@ JavaScript 사전
 
 `alert(1.2 + 1.3);`	`alert(2 * 5);` 	`alert(6 / 2)`
 
-```
+```javascript
 Math.pow(3,2);		// 9,	3의 2승
 Math.round(10.6);	// 11,	10.6을 반올림
 Math.ceil(10.2);	// 11,	10.2를 올림
@@ -78,4 +78,53 @@ Math.random();		// 0부터 1.0 사이의 랜덤한 숫자
 `document.write("출력할 내용");`
 
 문서를 출력해줌.
+
+
+
+### 함수
+
+함수(function)란 하나의 로직을 재실행 할 수 있도록 하는 것으로 코드의 재사용성을 높여준다.
+
+다양한 함수의 형식
+
+```javascript
+function 함수명( [인자, ..., 인자]) {
+  코드
+  return 반환값
+}
+```
+
+```javascript
+함수명 = function([인자, ..., 인자]) {
+  코드
+  return 반환값
+}
+```
+
+```javascript
+//익명함수
+(function (){
+  코드
+  return 반환값
+})();
+```
+
+
+
+### 객체(Object)
+
+객체를 만드는 법
+
+`var grades = {'a' : 10, 'b' : 6, 'c' : 80};`
+
+```javascript
+var grades = { };       //new Object(); 같은표현
+	grades{'a'} = 10;
+	grades{'b'} = 6;    
+	grades{'c'} = 80;
+```
+
+ a, b, c는 key가 되고 10, 6, 80은 value가 된다.
+
+
 
