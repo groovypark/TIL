@@ -15,9 +15,15 @@
 # [3, 30, 34, 5, 9] | "9534330"
 
 
+# 첫 번째 숫자로 정렬
+# 두 수를 문자열로 합한 후 크기 비교
 def solution(numbers):
     answer = ''
-    # 모르겠당..?
+    numbers = sorted(numbers, key=lambda x: (x % 10, x))
+    sorted_arr = numbers[::-1]
+
+    for n in numbers:
+        answer = str(n) + answer
 
     return answer
 
@@ -29,3 +35,23 @@ print(solution(numbers) == _return)
 numbers = [3, 30, 34, 5, 9]
 _return = "9534330"
 print(solution(numbers) == _return)
+
+
+# ---
+# 다른 사람 풀이(JS)
+# function solution(numbers) {
+#     var answer = numbers.map(v=> v + '')
+#     .sort((a, b)=> (b+a) * 1 - (a+b) * 1)
+#     .join('')
+
+#     return answer[0] == = '0'?'0': answer
+# }
+
+
+# ---
+# 다른 사람 풀이
+# numbers의 원소는 0 이상 1, 000 이하이기 때문에 x*3
+def solution2(numbers):
+    numbers = list(map(str, numbers))
+    numbers.sort(key=lambda x: x*3, reverse=True)
+    return str(int(''.join(numbers)))
