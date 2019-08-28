@@ -51,6 +51,10 @@ print(solution(numbers) == _return)
 # ---
 # 다른 사람 풀이
 # numbers의 원소는 0 이상 1, 000 이하이기 때문에 x*3
+
+# 숫자를 문자열로 변환 후
+# 문자(숫자) 반복 3번, reverse하여 큰숫자 순서대로 정렬
+# 숫자들 문자열로 join
 def solution2(numbers):
     numbers = list(map(str, numbers))
     numbers.sort(key=lambda x: x*3, reverse=True)
