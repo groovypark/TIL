@@ -22,13 +22,124 @@
 # 원래의 비밀지도를 해독하여 '#', 공백으로 구성된 문자열 배열로 출력하라.
 
 # 입출력 예제
-# 매개변수	값
-# n	5
-# arr1[9, 20, 28, 18, 11]
-# arr2[30, 1, 21, 17, 28]
-# 출력["#####", "# # #", "### #", "# ##", "#####"]
-# 매개변수	값
-# n	6
-# arr1[46, 33, 33, 22, 31, 50]
-# arr2[27, 56, 19, 14, 14, 10]
-# 출력["######", "### #", "## ##", " #### ", " #####", "### # "]
+# 매개변수 | 값
+# n       | 5
+# arr1    | [9, 20, 28, 18, 11]
+# arr2    | [30, 1, 21, 17, 28]
+# 출력    | ["#####", "# # #", "### #", "# ##", "#####"]
+
+# 매개변수 | 값
+# n	      | 6
+# arr1    | [46, 33, 33, 22, 31, 50]
+# arr2    | [27, 56, 19, 14, 14, 10]
+# 출력    | ["######", "### #", "## ##", " #### ", " #####", "### # "]
+
+
+def binary(num):
+    result = ''
+    while num > 0:
+        # 0은 ' ', 1은 '#'으로
+        if num % 2 == 0:
+            result = ' ' + result
+        if num % 2 == 1:
+            result = '#' + result
+        num = num//2
+    return result
+
+def solution(n, arr1, arr2):
+    answer = []
+    map1 = []
+    map2 = []
+    # 지도 두개를 이진수로 바꾸기
+    for i in range(n):
+        map1.append(binary(arr1[i]).rjust(n, ' '))
+        map2.append(binary(arr2[i]).rjust(n, ' '))
+    # 두 개의 지도를 겹쳐서 하나의 지도 만들기
+    for i in range(n):
+        line = ""
+        for j in range(n):
+            if map1[i][j] == "#" or map2[i][j] == '#':
+                line = line + "#"
+            else:
+                line = line + " "
+        answer.append(line)
+
+    return answer
+
+print(solution(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28]))
+print(solution(6, [46, 33, 33, 22, 31, 50], [27, 56, 19, 14, 14, 10]))
+
+# ---
+# 예전 풀이
+
+
+def solution2(n, arr1, arr2):
+    map1 = []
+    map2 = []
+    answer = []
+    for i in range(n):
+        # map1
+        num1 = arr1[i]
+        line = []
+        # 라인 생성
+        while True:
+            if num1 % 2 == 0:
+                line.append(' ')
+            if num1 % 2 == 1:
+                line.append('#')
+            num1 = num1//2
+            if num1 == 1:
+                line.append('#')
+                break
+            if num1 == 0:
+                break
+        # 라인이 n보다 짧을 경우
+        while len(line) < n:
+            line.append(' ')
+        # 라인이 n보다 길 경우
+        while len(line) > n:
+            del line[0]
+        # 맵에 라인 추가
+        map1.append(line[::-1])
+        # map1.append(''.join(line)[::-1])
+
+        # map2
+        num2 = arr2[i]
+        line = []
+        while True:
+            if num2 % 2 == 0:
+                line.append(' ')
+            if num2 % 2 == 1:
+                line.append('#')
+            num2 = num2//2
+            if num2 == 1:
+                line.append('#')
+                break
+            if num2 == 0:
+                break
+        while len(line) < n:
+            line.append(' ')
+        while len(line) > n:
+            del line[0]
+        map2.append(line[::-1])
+
+    # map1을 고치고 answer에 추가
+    for i in range(n):
+        for j in range(n):
+            if map1[i][j] == '#' or map2[i][j] == '#':
+                map1[i][j] = '#'
+        answer.append(''.join(map1[i]))
+    return answer
+
+# ---
+# 다른 사람 풀이
+
+def solution3(n, arr1, arr2):
+    answer = []
+    for i, j in zip(arr1, arr2):
+        a12 = str(bin(i | j)[2:])
+        a12 = a12.rjust(n, '0')
+        a12 = a12.replace('1', '#')
+        a12 = a12.replace('0', ' ')
+        answer.append(a12)
+    return answer
