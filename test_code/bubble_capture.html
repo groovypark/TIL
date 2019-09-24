@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bubble_capture</title>
+</head>
+<body>
+    <div class="a">
+        <div class="b">
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    const handler = (e) => {
+            console.log(e.currentTarget.className);
+    };
+    document.getElementsByClassName('a')[0].addEventListener('click', handler);   // addEventListener의 세번째 값이 true면 캡처링, false면 버블링. defualt는 false
+    document.getElementsByClassName('b')[0].addEventListener('click', handler);
+</script>
+
+<style>
+    .a {
+        width: 550px;
+        height: 530px;
+        background: yellow;
+    }
+    .b {
+        width: 250px;
+        height: 230px;
+        background: red;
+    }
+</style>
