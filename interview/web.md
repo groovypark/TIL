@@ -6,6 +6,8 @@
 자원의 주소는 URI(Uniform Resource Identifier)에 의해 정해진다.  
 웹 표준화 기구인 W3C를 따른다.  
 
+![렌더링 엔진의 동작 과정](https://d2.naver.com/content/images/2015/06/helloworld-59361-2.png)  
+
 동작 과정
 1. HTML 문서 파싱. 태그를 DOM 노드로 변환.
 2. 외부 CSS 파일과 함께 포함된 스타일 요소 파싱. 렌더 트리 생성.
