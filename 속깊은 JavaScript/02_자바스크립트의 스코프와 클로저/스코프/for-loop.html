@@ -1,0 +1,20 @@
+<!-- 스코프란, 현재 접근할 수 있는 범위 -->
+
+<div id="div0">Click me! DIV 0 </div>
+<div id="div1">Click me! DIV 1 </div>
+<div id="div2">Click me! DIV 2 </div>
+<script>
+    var i, len = 3,
+    for (i = 0; i < len; i++) {
+        document.getElementById("div" + i).addEventListener("click", function () {
+            alert("You Clicked div #" + i);
+        }, false);
+    }
+</script>
+
+<!-- 
+    콜백함수는 글로벌 스코프인 변수 i에 접근할 수 있다.
+    for-loop를 돌면서 각각의 div에 이벤트 핸들러를 부여할 때 i는 3까지 증가한다.
+    이후 콜백함수인 alert()가 실행될 때에는 이미 i가 3인 상태이므로
+    **"You clicked div #3"**이 출력된다. 
+-->
