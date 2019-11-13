@@ -1,0 +1,23 @@
+<div id="divScope0">Click me! DIV 0</div>
+<div id="divScope1">Click me! DIV 1</div>
+<div id="divScope2">Click me! DIV 2</div>
+<script>
+function setDivClick(index) {
+    document.getElementById("divScope" + index).addEventListener(
+        "click",
+        function () {
+            alert("You clicked div #" + index);
+        },
+        false
+    );
+}
+
+var i, len = 3;
+for (var i = 0; i < len; i++) {
+    setDivClick(i);
+}
+</script>
+
+<!-- 
+    별도의 함수를 추가했으므로 스코프가 생성되고 지속되므로 정상적으로 동작한다.
+ -->

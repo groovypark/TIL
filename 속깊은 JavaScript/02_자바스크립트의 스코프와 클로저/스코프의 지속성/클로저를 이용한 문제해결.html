@@ -1,0 +1,22 @@
+<div id="divScope0">Click me! DIV 0</div>
+<div id="divScope1">Click me! DIV 1</div>
+<div id="divScope2">Click me! DIV 2</div>
+<script>
+    var i, len = 3;
+    for (var i = 0; i < len; i++) {
+        document.getElementById("divScope" + index).addEventListener(
+            "click",
+            (function (index) {
+                return function () {
+                    alert("You clicked div #" + index);
+                };
+            }(i)),
+            false);
+    }
+</script>
+
+<!-- 
+    익명함수는 index라는 파라미터를 받고, 그 파라미터는 i의 값을 넘겨준다.
+    IIFE(Immediate Invoke Function Expression): 즉시 호출 함수
+    IIFE 표현 방식으로 스코프 체인을 생성해서 클로저를 활용하였다.
+ -->
